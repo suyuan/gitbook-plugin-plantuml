@@ -80,26 +80,26 @@ module.exports = {
             // page.content is a string with the file markdown content
 
             var pathToken = page.path.split('/')
-
+            //console.log(pathToken);
             var chapterPath
             var assetPath
             var baseName
             var umlPath
 
             if (pathToken.length == 1) {
-                chapterPath = '.'
+                chapterPath = ''
                 assetPath = '/assets/images/uml/'
                 baseName = pathToken[0].split('.')[0]
             }
             else {
-                chapterPath = pathToken[0]
+                chapterPath = pathToken.join('/').replace("/"+pathToken[pathToken.length-1],"")
                 assetPath = '/assets/images/uml/' + chapterPath + '/'
-                baseName = pathToken[1].split('.')[0]
+                baseName = pathToken[pathToken.length-1].split('.')[0]
             }
 
             umlPath = './assets/images/uml/' + chapterPath + '/' + baseName + '.uml'
-
-            mkdirp.sync('./assets/images/uml/' + chapterPath);
+            //console.log(umlPath);
+            mkdirp.sync('./assets/images/uml/');
 
             var hasUml = parseUml(page, umlPath);
             if (!hasUml) { return page; }
