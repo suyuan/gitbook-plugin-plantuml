@@ -88,12 +88,12 @@ module.exports = {
 
             if (pathToken.length == 1) {
                 chapterPath = '.'
-                assetPath = './assets/images/uml/'
+                assetPath = '/assets/images/uml/'
                 baseName = pathToken[0].split('.')[0]
             }
             else {
                 chapterPath = pathToken[0]
-                assetPath = '../assets/images/uml/' + chapterPath + '/'
+                assetPath = '/assets/images/uml/' + chapterPath + '/'
                 baseName = pathToken[1].split('.')[0]
             }
 
