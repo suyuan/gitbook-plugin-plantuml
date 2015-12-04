@@ -98,10 +98,11 @@ module.exports = {
             }
 
             umlPath = './assets/images/uml/' + chapterPath + '/' + baseName + '.uml'
-            //console.log(umlPath);
-            mkdirp.sync('./assets/images/uml/');
+
+            mkdirp.sync('./assets/images/uml/'+ chapterPath );
 
             var hasUml = parseUml(page, umlPath);
+
             if (!hasUml) { return page; }
 
             console.log('processing uml... %j', page.path);
